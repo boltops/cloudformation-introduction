@@ -1,0 +1,16 @@
+---
+Parameters:
+  Env:
+    Description: Env. prod, dev or stag
+    Default: dev
+    Type: String
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType:
+        !If [UseLargerInstance, m1.small, t2.micro]
+      KeyName: 'default' # keypair must already exist
+      ImageId: ami-6869aa05 # AMI us-east-1
+Conditions:
+  UseLargerInstance: !Equals ['prod', !Ref Env]

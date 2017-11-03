@@ -1,0 +1,22 @@
+---
+Parameters:
+  App:
+    Description: "Examples: blog, api"
+    Type: String
+  Env:
+    Description: "Examples: prod, stag, dev"
+    Type: String
+  Role:
+    Description: "Examples: web, worker, scheduler"
+    Type: String
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: t2.micro
+      KeyName: 'default' # keypair must already exist
+      ImageId: ami-6869aa05 # AMI us-east-1
+      Tags:
+        -
+          Key: Name
+          Value: !Join [ '-', [!Ref App, !Ref Role, !Ref Env] ]

@@ -1,0 +1,13 @@
+---
+Parameters:
+  InstanceType:
+    Description: EC2 instance type
+    Type: String
+    Default: t2.micro
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType: !Ref InstanceType
+      KeyName: 'default' # keypair must already exist
+      ImageId: ami-6869aa05 # AMI us-east-1

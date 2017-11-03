@@ -1,0 +1,17 @@
+---
+Parameters:
+  LargerInstance:
+    Description: Whether a larger instance should be used
+    Default: false
+    Type: String
+    AllowedValues: [true, false]
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      InstanceType:
+        !If [UseLargerInstance, m4.large, t2.micro]
+      KeyName: 'default' # keypair must already exist
+      ImageId: ami-8c1be5f6 # AMI us-east-1
+Conditions:
+  UseLargerInstance: !Equals [true, !Ref LargerInstance]

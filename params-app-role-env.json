@@ -1,0 +1,14 @@
+[
+  {
+    "ParameterKey": "App",
+    "ParameterValue": "blog"
+  },
+  {
+    "ParameterKey": "Role",
+    "ParameterValue": "web"
+  },
+  {
+    "ParameterKey": "Env",
+    "ParameterValue": "prod"
+  }
+]
